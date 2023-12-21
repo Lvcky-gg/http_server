@@ -21,5 +21,3 @@ impl TryFrom<&[u8]> for Request {
     fn try_from(buf: &[u8]) -> Result<Self, Self::Error> {
         unimplemented!()
     }
-
-}
