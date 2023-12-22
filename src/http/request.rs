@@ -1,7 +1,7 @@
 use std::error::Error;
 use super::method::Method;
 use std::convert::TryFrom;
-use std::fmt::Display;
+use std::fmt::{Result as FmtResult, Display, Formatter};
 pub struct Request {
     path: String,
     query_string: Option<String>,
@@ -27,7 +27,9 @@ impl TryFrom<&[u8]> for Request {
 }
 
 impl Display for ParseError {
-
+    fn fmt(&self, f: &mut Formatter)->FmtResult{
+        write!(f, "{}", self.message())
+    }
 }
 
 pub enum ParseError {
@@ -36,6 +38,16 @@ pub enum ParseError {
     InvalidProtocol,
     InvalidMethod,
 
+}
+impl ParseError {
+    fn message(&self)->&str{
+        match self{
+            InvalidMethod,
+            InvalidProtocol,
+            InvalidEncoding,
+            InvalidRequest
+        }
+    }
 }
 
 impl Error for ParseError{}
