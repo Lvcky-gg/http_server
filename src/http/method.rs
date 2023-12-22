@@ -30,8 +30,7 @@ impl FromStr for Method {
             _=> Err(MethodError),
         }
 
-        unimplemented!()
     }
 }
 
-pub struct MethodError
+pub struct MethodError;
