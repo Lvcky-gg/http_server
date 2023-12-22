@@ -30,6 +30,11 @@ impl TryFrom<&[u8]> for Request {
 
 }
 
+fn get_next_word(request: &str) -> Option<(&str, &str)> {
+    request.chars();
+    unimplemented!()
+}
+
 impl Display for ParseError {
     fn fmt(&self, f: &mut Formatter)->FmtResult{
         write!(f, "{}", self.message())
