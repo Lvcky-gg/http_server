@@ -31,8 +31,12 @@ impl TryFrom<&[u8]> for Request {
 }
 
 fn get_next_word(request: &str) -> Option<(&str, &str)> {
-    request.chars();
-    unimplemented!()
+
+    for (i, c) in request.chars().enumerate() {
+        if c == ' '{
+            return Some((&request[..i], &request[i + 1..]));
+        }
+    }
 }
 
 impl Display for ParseError {
