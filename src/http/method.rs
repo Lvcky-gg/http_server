@@ -1,5 +1,5 @@
 use std::str::FromStr;
-
+#[derive(Debug)]
 pub enum Method {
     GET,
     POST,
